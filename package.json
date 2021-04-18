@@ -2,7 +2,7 @@
   "name": "space-station-vue",
   "version": "1.0.0",
   "description": "国际空间站",
-  "main": "./src/index.js",
+  "main": "./src/main.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --config config/webpack.dev.js",
     "stage": "node config/webpack.stage.js",
