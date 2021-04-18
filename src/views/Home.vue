@@ -17,17 +17,17 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .app-home {
         font-size: 18px;
-    }
 
-    .sub-tit {
-        line-height: 50px;
-        color: #3388ff;
-    }
+        .sub-tit {
+            line-height: 50px;
+            color: #3388ff;
+        }
 
-    .start-img {
-        width: 320px;
+        .start-img {
+            width: 320px;
+        }
     }
 </style>

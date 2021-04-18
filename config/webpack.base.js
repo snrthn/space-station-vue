@@ -66,6 +66,28 @@ module.exports = {
                 exclude: path.resolve(__dirname, 'node_modules')
             },
             {
+                test: /\.less$/i,
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: path.resolve(__dirname, 'utils/handleUrl'),
+                    options: {
+                        publicPath: config.assetsPublicPath,
+                        dirPath: '../../'
+                    }
+                }, 'css-loader', 'postcss-loader', 'less-loader'],
+                exclude: path.resolve(__dirname, 'node_modules')
+            },
+            {
+                test: /\.sass$/i,
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: path.resolve(__dirname, 'utils/handleUrl'),
+                    options: {
+                        publicPath: config.assetsPublicPath,
+                        dirPath: '../../'
+                    }
+                }, 'css-loader', 'postcss-loader', 'sass-loader'],
+                exclude: path.resolve(__dirname, 'node_modules')
+            },
+            {
                 test: /\.(jpg|png|gif)$/i,
                 use: {
                     loader: 'url-loader',
