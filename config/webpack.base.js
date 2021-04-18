@@ -7,9 +7,10 @@ let CopyWebpackPlugin = require('copy-webpack-plugin');
 let { handleEnvConst } = require('./utils/handleTools');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+let VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/index'),
+    entry: path.resolve(__dirname, '../src/main'),
     // 输出
     output: {
         path: path.resolve(__dirname, '../' + config.assetsRoot),
@@ -102,14 +103,23 @@ module.exports = {
                         limit: 1000
                     }
                 }
+            },
+            {
+                test: /\.vue$/i,
+                use: 'vue-loader'
             }
         ]
     },
     // 解决方案
     resolve: {
-        extensions: ['.js', '.json'],
+        extensions: ['.js', '.json', '.vue'],
         alias: {
-            '@': path.resolve(__dirname, '../src')
+            'vue': 'vue/dist/vue.esm',
+            '@': path.resolve(__dirname, '../src'),
+            'views': path.resolve(__dirname, '../src/views'),
+            'assets': path.resolve(__dirname, '../src/assets'),
+            'styles': path.resolve(__dirname, '../src/styles'),
+            'utils': path.resolve(__dirname, '../src/utils')
         }
     },
     // 性能
@@ -165,6 +175,8 @@ module.exports = {
             assetsDir: config.assetsPublicPath + config.assetsSubDirectory,
             filename: 'index.html',
             inject: 'body'
-        })
+        }),
+        // 解析 Vue 文件
+        new VueLoaderPlugin()
     ]
 };
