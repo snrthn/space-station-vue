@@ -5,6 +5,7 @@
 
 import Vue from 'vue';
 import App from './App';
+import Store from 'store';
 
 import './styles/reset.css';
 import './styles/global.css';
@@ -15,6 +16,7 @@ import './styles/global.css';
  */
 new Vue({
     el: '#app',
+    Store,
     components: { App },
     template: `<App/>`
 })

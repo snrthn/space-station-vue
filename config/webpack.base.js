@@ -138,10 +138,14 @@ module.exports = {
         alias: {
             'vue': 'vue/dist/vue.esm',
             '@': path.resolve(__dirname, '../src'),
-            'views': path.resolve(__dirname, '../src/views'),
+            'api': path.resolve(__dirname, '../src/api'),
+            'components': path.resolve(__dirname, '../src/components'),
+            'common': path.resolve(__dirname, '../src/common'),
+            'store': path.resolve(__dirname, '../src/store'),
             'assets': path.resolve(__dirname, '../src/assets'),
             'styles': path.resolve(__dirname, '../src/styles'),
-            'utils': path.resolve(__dirname, '../src/utils')
+            'utils': path.resolve(__dirname, '../src/utils'),
+            'views': path.resolve(__dirname, '../src/views')
         }
     },
     // 性能
