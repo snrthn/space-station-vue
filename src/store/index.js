@@ -10,17 +10,21 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
     state: {
-        name: '空间站'
+        name: '国际空间站'
     },
+
     mutations: {
 
     },
+
     actions: {
 
     },
+
     getters: {
 
     },
+
     modules: {
 
     }

@@ -141,6 +141,7 @@ module.exports = {
             'api': path.resolve(__dirname, '../src/api'),
             'components': path.resolve(__dirname, '../src/components'),
             'common': path.resolve(__dirname, '../src/common'),
+            'router': path.resolve(__dirname, '../src/router'),
             'store': path.resolve(__dirname, '../src/store'),
             'assets': path.resolve(__dirname, '../src/assets'),
             'styles': path.resolve(__dirname, '../src/styles'),
