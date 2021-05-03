@@ -1,28 +1,19 @@
 ﻿<template>
     <div class="app-main">
-        <div>{{ msg }}</div>
-        <hr/>
-        <Home/>
+        <router-view/>
     </div>
 </template>
 
 <script>
-    import Home from 'views/Home';
     export default {
-        components: {
-            Home
-        },
         data () {
-            return {
-                msg: '这是我的第一个Vue程序！Hello World！'
-            }
+            return {}
         }
     }
 </script>
 
-<style>
+<style lang="less">
     .app-main {
-        color: #424242;
-        font-size: 24px;
+        font-size: 16px;
     }
 </style>

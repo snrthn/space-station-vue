@@ -9,7 +9,13 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 let router = new Router({
-    routes: []
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            components: require('views/Home')
+        }
+    ]
 });
 
 export default router;
