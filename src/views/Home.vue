@@ -5,7 +5,7 @@
         <div class="demo">
             <div>
                 <div class="sub-tit">图片示例</div>
-                <img class="start-img" :src="require('assets/images/start.jpg')" alt="发射场">
+                <img class="start-img" :src="require('assets/images/start.png')" alt="发射场">
             </div>
             <div>
                 <div class="sub-tit">图片示例</div>

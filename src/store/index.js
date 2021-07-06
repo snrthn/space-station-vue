@@ -10,7 +10,7 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
     state: {
-        name: '国际空间站'
+        name: '中国空间站'
     },
 
     mutations: {
