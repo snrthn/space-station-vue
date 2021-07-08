@@ -31,6 +31,14 @@
         },
         mounted () {
             console.log(this.$store.state.name)
+
+            function * demo () {
+                yield 'gen';
+            }
+
+            let d = demo();
+
+            console.log(d);
         }
     }
 </script>
