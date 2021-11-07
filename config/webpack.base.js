@@ -40,7 +40,7 @@ module.exports = {
                     {
                         loader: 'babel-loader'
                     }
-                ].concat(config.useEslint ? { loader: 'eslint-loader' } : []),
+                ],
                 exclude: path.resolve(__dirname, 'node_modules')
             },
             {
