@@ -8,6 +8,9 @@ import router from 'router';
 import store from 'store';
 import App from './App';
 
+import uploader from 'components/simple-uploader';
+Vue.use(uploader);
+
 import './styles/reset.css';
 import './styles/global.css';
 

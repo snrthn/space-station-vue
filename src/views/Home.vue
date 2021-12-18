@@ -1,87 +1,96 @@
 ﻿<template>
     <div class="app-home">
-        <div class="title">欢迎使用Vue.js</div>
-        <div class="content">Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的<span class="weight">渐进式框架</span>。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<span class="light">现代化的工具链</span>以及各种<span class="light">支持类库</span>结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</div>
-        <div class="demo">
-            <div>
-                <div class="sub-tit">图片示例</div>
-                <img class="start-img" :src="require('assets/images/start.png')" alt="发射场">
-            </div>
-            <div>
-                <div class="sub-tit">图片示例</div>
-                <img class="logo" :src="require('assets/images/logo.png')" alt="发射场">
-            </div>
-            <div>
-                <div class="sub-tit">音频示例</div>
-                <audio :src="require('assets/media/20210325.mp3')" controls/>
-            </div>
-        </div>
-        <Demo/>
+        
+        <uploader :options="options" :file-status-text="statusText" class="uploader-example" ref="uploader" @file-complete="fileComplete" @complete="complete"></uploader>
+
     </div>
 </template>
 
 <script>
-    import Demo from 'components/demo';
+    import axios from 'axios';
+    import qs from 'qs';
     export default {
-        components: {
-            Demo
-        },
         data () {
-            return {}
+            return {
+                options: {
+                    target: 'http://172.19.4.141:8081/boot/uploader/chunk',
+                    testChunks: true,
+                    simultaneousUploads: 1,
+                    chunkSize: 10 * 1024 * 1024,
+                    // checkChunkUploadedByResponse: function (chunk, message) {
+                    //   let objMessage = {}
+                    //   try {
+                    //     objMessage = JSON.parse(message)
+                    //   } catch (e) {
+                    //   }
+                    //   // fake response
+                    //   // objMessage.uploaded_chunks = [2, 3, 4, 5, 6, 8, 10, 11, 12, 13, 17, 20, 21]
+                    //   // check the chunk is uploaded
+                    //   return (objMessage.uploaded_chunks || []).indexOf(chunk.offset + 1) >= 0
+                    // }
+                },
+                attrs: {
+                    accept: 'image/*'
+                },
+                statusText: {
+                    success: '成功了',
+                    error: '出错了',
+                    uploading: '上传中',
+                    paused: '暂停中',
+                    waiting: '未开始'
+                }
+            }
         },
-        mounted () {
-            console.log(this.$store.state.name);
+        mounted() {
+            this.$nextTick(() => {
+                window.uploader = this.$refs.uploader.uploader
+            })
+        },
+        methods: {
+            // 上传完成
+            complete() {
+                console.log('complete', arguments)
+            },
+            // 一个根文件（文件夹）成功上传完成。
+            fileComplete() {
+                console.log('file complete', arguments)
+                const file = arguments[0].file;
+                axios.post('http://172.19.4.141:8081/boot/uploader/mergeFile', qs.stringify({
+                    filename: file.name,
+                    identifier: arguments[0].uniqueIdentifier,
+                    totalSize: file.size,
+                    type: file.type
+                })).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         }
     }
 </script>
 
 <style lang="less">
     .app-home {
-        padding: 8px;
-        font-size: 18px;
 
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 50px;
-            color: #424242;
+        .uploader-example {
+            width: 1000px;
+            padding: 15px;
+            margin: 40px auto 0;
+            font-size: 12px;
+            box-shadow: 0 0 10px rgba(62, 146, 203, 0.4);
         }
 
-        .content {
-            font-size: 16px;
-            line-height: 28px;
-            text-align: justify;
+        .uploader-example .uploader-btn {
+            margin-right: 4px;
         }
 
-        .weight {
-            font-weight: bold;
+        .uploader-example .uploader-list {
+            max-height: 440px;
+            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
-
-        .light {
-            font-weight: bold;
-            color:#42b983
-        }
-
-        .sub-tit {
-            line-height: 50px;
-            color: #3388ff;
-        }
-
-        .start-img {
-            width: 320px;
-        }
-
-        .logo {
-            width: 200px;
-        }
-
-        .demo {
-            margin-bottom: 8px;
-            display: flex;
-
-            > div {
-                margin-right: 16px;
-            }
-        }
+        
     }
 </style>
