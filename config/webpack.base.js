@@ -55,7 +55,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
-                        modules: true
+                        modules: false
                     }
                 }, 'postcss-loader'],
                 exclude: path.resolve(__dirname, 'node_modules')
@@ -72,7 +72,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
-                        modules: true
+                        modules: false
                     }
                 }, 'postcss-loader', 'less-loader'],
                 exclude: path.resolve(__dirname, 'node_modules')
@@ -89,7 +89,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
-                        modules: true
+                        modules: false
                     }
                 }, 'postcss-loader', 'sass-loader'],
                 exclude: path.resolve(__dirname, 'node_modules')
