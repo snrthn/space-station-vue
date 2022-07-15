@@ -1,6 +1,7 @@
 <template>
     <div class="app-test">
         <h1>测试组件</h1>
+        <slot></slot>
     </div>
 </template>
 

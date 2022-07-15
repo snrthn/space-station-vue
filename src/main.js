@@ -11,6 +11,9 @@ import App from './App';
 import './styles/reset.css';
 import './styles/global.css';
 
+
+import 'utils/permission';
+
 /**
  * 初始化 Vue 根节点
  */
