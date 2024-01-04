@@ -13,8 +13,8 @@ export default {
     components: { timeOut },
     data () {
       return {
-        startTime: '2023-09-01 17:00',
-        endTime: '2023-09-02 08:58'
+        startTime: '2023-10-01 17:00',
+        endTime: '2023-10-24 18:58'
       }
     },
     mounted () {

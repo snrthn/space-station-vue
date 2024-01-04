@@ -1,6 +1,6 @@
 ﻿<template>
   <div>
-    
+
     <!-- Tab标签 -->
     <div class="tab-lab">
       <span :class="activeId === 'formTable' ? 'act' : ''" @click="activeId = 'formTable'">表单提交</span>
@@ -9,27 +9,26 @@
 
     <!-- 组件区 -->
     <component :is="activeId"></component>
-    
+
   </div>
 </template>
 
-
 <script>
-import formTable from './formTable.vue'
-import timeDown from './timeDown.vue'
+import formTable from './formTable.vue';
+import timeDown from './timeDown.vue';
 export default {
-    components: { formTable, timeDown },
-    data () {
-      return {
-        activeId: 'formTable'
-      }
-    },
-    mounted () {
-      
-    },
-    methods: {
-      
-    }
+  components: { formTable, timeDown },
+  data () {
+    return {
+      activeId: 'formTable'
+    };
+  },
+  mounted () {
+
+  },
+  methods: {
+
+  }
 };
 </script>
 

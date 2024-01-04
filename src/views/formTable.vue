@@ -3,8 +3,6 @@
 
     <myComponent :formData="formData" />
     
-    {{ formData }}
-    
   </div>
 </template>
 
@@ -27,7 +25,7 @@ export default {
     },
     methods: {
       fetchData () {
-        this.formData = { a: 2, b:3, c: 4 }
+        this.formData = { name: '小明', age: 23 }
       }
     }
 };

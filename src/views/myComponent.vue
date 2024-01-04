@@ -15,8 +15,6 @@
     </div>
 
     <button @click="addFun()">新增</button>
-
-    <div>是否为首次加载：{{ isInit ? '是' : '否' }}</div>
     
   </div>
 </template>
